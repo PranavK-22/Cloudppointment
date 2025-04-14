@@ -29,13 +29,13 @@ jobs:
 
       - name: Zip artifact for deployment
         working-directory: ./project-root/healthcare-backend
-        run: zip -r ../../../release.zip ./*
+        run: zip -r release.zip ./*   # Zip in the current directory
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v4
         with:
           name: python-app
-          path: ../../../release.zip   # This ensures the zip is uploaded correctly
+          path: ./project-root/healthcare-backend/release.zip  # Direct path to the zip file
 
   deploy:
     runs-on: ubuntu-latest

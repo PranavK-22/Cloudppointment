@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { API_URL } from "./config";
-import "./App.css"; // Import the updated CSS
+import "./App.css";
 
 function App() {
   const [patientName, setPatientName] = useState("");
@@ -15,14 +15,14 @@ function App() {
       alert("All fields are required!");
       return;
     }
-  
+
     try {
-      const response = await axios.post(`${API_URL}/book`, {
+      await axios.post(`${API_URL}/book`, {
         patient_name: patientName,
         doctor_name: doctorName,
         appointment_date: date,
       });
-  
+
       alert("Appointment booked!");
       window.location.reload();
     } catch (error) {
@@ -54,7 +54,7 @@ function App() {
           onChange={(e) => setDoctorName(e.target.value)}
           className="input-field"
         />
-        
+
         <div className="date-picker-container">
           <input
             type="datetime-local"
@@ -70,7 +70,6 @@ function App() {
           Book Appointment
         </button>
       </div>
-
     </div>
   );
 }

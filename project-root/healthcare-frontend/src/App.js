@@ -1,27 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { API_URL } from "./config";
 import "./App.css"; // Import the updated CSS
 
 function App() {
-  const [appointments, setAppointments] = useState([]);
   const [patientName, setPatientName] = useState("");
   const [doctorName, setDoctorName] = useState("");
   const [date, setDate] = useState("");
   const [showDatePicker, setShowDatePicker] = useState(false);
-
-  // Fetch appointments from backend
-  useEffect(() => {
-    const fetchAppointments = async () => {
-      try {
-        const response = await axios.get(`${API_URL}/appointments`);
-        setAppointments(response.data);
-      } catch (error) {
-        console.error("Error fetching appointments:", error);
-      }
-    };
-    fetchAppointments();
-  }, []);
 
   // Function to book an appointment
   const bookAppointment = async () => {
